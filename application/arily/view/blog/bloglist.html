@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>博客管理</title>
+<link rel="stylesheet" type="text/css" href="__CSS__/css.css" />
+<link rel="stylesheet" type="text/css" href="__CSS__/manhuaDate.1.0.css">
+	<script type="text/javascript" src="__JS__/jquery.min.js"></script>
+	<script type="text/javascript" src="__JS__/manhuaDate.1.0.js"></script>
+	<script type="text/javascript" src="__JS__/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript">
+		$(function (){
+		  $("input.mh_date").manhuaDate({
+			Event : "click",//可选
+			Left : 0,//弹出时间停靠的左边位置
+			Top : -16,//弹出时间停靠的顶部边位置
+			fuhao : "-",//日期连接符默认为-
+			isTime : false,//是否开启时间值默认为false
+			beginY : 1949,//年份的开始默认为1949
+			endY :2100//年份的结束默认为2049
+		  });
+		});
+	</script>
+</head>
+
+<body>
+<!-- 头部 -->
+{include file="public/head"}
+<!-- 头部 -->
+
+	<!-- 左边列表 -->
+	<div class="container">
+		{include file="public/left"}
+	</div>
+	<!--左列表-->
+<div style="margin-left: 13%;">
+	<!--main-->
+	<div id="pageAll">
+		<div class="page" style="align:center;">
+			<div class="pageTop">
+				<!-- main页面样式 -->
+				<img src="__IMG__/coin02.png"/><span><a href="#">首页</a>&nbsp;-&nbsp;<a
+					href="#">博客管理</a>&nbsp;-</span>&nbsp;博客管理
+				<!-- 列表页面样式 -->
+			</div>
+			<div class="vip">
+				<div class="conform">
+					<form>
+
+						<div class="cfD">
+							<input class="addUser" type="text" placeholder="输入" />
+							<button class="button">搜索</button>
+							<a class="addA addA1" href="{:url('blog/addblog')}">新增博客</a>
+						</div>
+					</form>
+				</div>
+				<!-- 列表 表格 显示 -->
+				<div class="conShow">
+					<table border="1" cellspacing="0" cellpadding="0" style="table-layout: fixed;word-wrap: break-word;">
+						<tr>
+							<td width="100px" class="tdColor tdC">博客序号</td>
+							<td width="188px" class="tdColor">博客标题</td>
+							<td width="188px" class="tdColor">博客内容</td>
+							<td width="188px" class="tdColor">博客作者</td>
+							<td width="100px" class="tdColor">博客状态</td>
+							<td width="188px" class="tdColor">博客链接</td>
+							<td width="188px" class="tdColor">博客图片</td>
+							<td width="160px" class="tdColor">操作</td>
+						</tr>
+                        {volist name="blog" id="v"}
+						<tr>
+							<td>{$v.blog_id}</td>
+							<td>{$v.blog_title}</td>
+							<td>{$v.blog_content}</td>
+							<td>{$v.blog_editor}</td>
+							<td>{$v.blog_status}</td>
+							<td>{$v.blog_link}</td>
+							<td>{$v.blog_img}</td>
+							<td><a href="{:url('blog/updateblog',['blog_id'=>{$v.blog_id}])}"><img class="operation" src="__IMG__/update.png"></a>
+								<a ><img class="operation delban" src="__IMG__/delete.png"></a>
+							</td>
+						</tr>
+						{/volist}
+					</table>
+					<div class="paging">此处是分页</div>
+				</div>
+			</div>
+			<!-- main页面样式end -->
+		</div>
+		</div>
+</div>
+	<!--main结束-->
+
+
+	<!-- 删除弹出框 -->
+	<div class="banDel">
+		<div class="delete">
+			<div class="close">
+				<a><img src="__IMG__/shanchu.png" /></a>
+			</div>
+			<p class="delP1">你确定要删除此条记录吗？</p>
+			<p class="delP2">
+				<a href="#" class="ok yes">确定</a><a class="ok no">取消</a>
+			</p>
+		</div>
+	</div>
+	<!-- 删除弹出框  end-->
+</body>
+
+	<script type="text/javascript">
+	// 广告弹出框
+	$(".delban").click(function(){
+	  $(".banDel").show();
+	});
+	$(".close").click(function(){
+	  $(".banDel").hide();
+	});
+	$(".no").click(function(){
+	  $(".banDel").hide();
+	});
+	// 广告弹出框 end
+	</script>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>留言管理</title>
+<link rel="stylesheet" type="text/css" href="__CSS__/css.css" />
+<link rel="stylesheet" type="text/css" href="__CSS__/manhuaDate.1.0.css">
+	<script type="text/javascript" src="__JS__/jquery.min.js"></script>
+	<script type="text/javascript" src="__JS__/manhuaDate.1.0.js"></script>
+	<script type="text/javascript" src="__JS__/jquery-1.7.2.min.js"></script>
+</head>
+
+<body>
+<!-- 头部 -->
+{include file="public/head"}
+<!-- 头部 -->
+
+	<!-- 左边列表 -->
+	<div class="container">
+		{include file="public/left"}
+	</div>
+	<!--左列表-->
+<div style="margin-left: 13%;">
+	<!--main-->
+	<div id="pageAll">
+		<div class="page" style="align:center;">
+			<div class="pageTop">
+				<!-- main页面样式 -->
+				<img src="__IMG__/coin02.png"/><span><a href="#">首页</a>&nbsp;-&nbsp;<a
+					href="#">留言管理</a>&nbsp;-</span>&nbsp;留言列表
+				<!-- 列表页面样式 -->
+			</div>
+			<div class="vip">
+				<div class="conform">
+					<form action="{:url('message/messagelist')}" method="post">
+
+						<div class="cfD">
+							<input class="addUser" type="text" placeholder="输入" />
+							<button class="button">搜索</button>
+
+						</div>
+					</form>
+				</div>
+				<!-- 列表 表格 显示 -->
+				<div class="conShow">
+					<table border="1" cellspacing="0" cellpadding="0">
+						<tr>
+							<td width="66px" class="tdColor tdC">留言序号</td>
+							<td width="250px" class="tdColor">留言者</td>
+							<td width="188px" class="tdColor">是否显示</td>
+							<td width="235px" class="tdColor">留言内容</td>
+							<td width="235px" class="tdColor">操作</td>
+						</tr>
+                        {volist name="leamessage" id="v"}
+						<tr>
+							<td>{$v.message_id}</td>
+							<td>{$v.message_editor}</td>
+							<td>{$v.message_status}</td>
+							<td>{$v.message_content}</td>
+							<td><a href="{:url('arilist/updatelist',['message_id'=>{$v.message_id}])}"><img class="operation" src="__IMG__/update.png"></a>
+								<a><img class="operation delban" src="__IMG__/delete.png"></a>
+							</td>
+						</tr>
+						{/volist}
+					</table>
+					<div class="paging">此处是分页</div>
+				</div>
+			</div>
+			<!-- main页面样式end -->
+		</div>
+		</div>
+</div>
+	<!--main结束-->
+
+
+	<!-- 删除弹出框 -->
+	<div class="banDel">
+		<div class="delete">
+			<div class="close">
+				<a><img src="__IMG__/shanchu.png" /></a>
+			</div>
+			<p class="delP1">你确定要删除此条记录吗？</p>
+			<p class="delP2">
+				<a href="#" class="ok yes">确定</a><a class="ok no">取消</a>
+			</p>
+		</div>
+	</div>
+	<!-- 删除弹出框  end-->
+</body>
+
+	<script type="text/javascript">
+	// 广告弹出框
+	$(".delban").click(function(){
+	  $(".banDel").show();
+	});
+	$(".close").click(function(){
+	  $(".banDel").hide();
+	});
+	$(".no").click(function(){
+	  $(".banDel").hide();
+	});
+	// 广告弹出框 end
+	</script>
+</html>

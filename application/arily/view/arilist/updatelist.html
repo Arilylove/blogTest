@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>修改列表</title>
+<link rel="stylesheet" type="text/css" href="__CSS__/css.css" />
+<script type="text/javascript" src="__JS__/jquery.min.js"></script>
+</head>
+<body>
+<!-- 头部 -->
+{include file="public/head"}
+<!-- 头部 -->
+	<div id="pageAll">
+		<div class="pageTop">
+			<div class="page">
+				<img src="__IMG__/coin02.png" /><span><a href="#">首页</a>&nbsp;-&nbsp;<a
+					href="#">列表管理</a>&nbsp;-</span>&nbsp;修改列表
+			</div>
+		</div>
+		<div class="page">
+			<!-- 新增列表页面样式 -->
+			<div class="banneradd bor">
+				<div class="baTopNo">
+					<span>修改列表</span>
+				</div>
+				<div class="baBody">
+					<form action="{:url('arilist/updatelistout')}" method="post">
+						<input type="hidden" class="input3" name="list_id" value="{$list['list_id']}"/>
+						<div class="bbD">
+							列表名称：<input type="text" class="input3" value="{$list['list_name']}"/>
+						</div>
+						<div class="bbD">
+							列表级别：<select class="input3"  name="list_linkId">
+										<option selected value="0">一级目录</option>
+										<option value="1">二级目录</option>
+						</select>
+						<div class="bbD">
+							是否显示：<select class="input3" >
+											<option selected value="1">显示</option>
+											<option value="0">不显示</option>
+									  </select>
+						</div>
+						<div class="bbD">
+							<p class="bbDP">
+								<input type="submit" class="btn_ok btn_yes" value="提交">
+								<a class="btn_ok btn_no" href="{:url('arilist/listline')}">取消</a>
+							</p>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<!-- 新增列表页面样式end -->
+		</div>
+	</div>
+</body>
+</html>

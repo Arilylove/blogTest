@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>给我留言</title>
+<link rel="stylesheet" type="text/css" href="__CSS__/css.css" />
+	<link href="__CSS__/base.css" rel="stylesheet">
+	<link href="__CSS__/main.css" rel="stylesheet">
+	<!--[if lt IE 9]>
+	<script src="__JS__/modernizr.js"></script>
+	<![endif]-->
+	<script type="text/javascript" src="__JS__/jquery.js"></script>
+<script type="text/javascript" src="__JS__/jquery.min.js"></script>
+</head>
+<body>
+<!--头-->
+{include file="public/head"}
+<!--头结束-->
+
+<div class="container">
+	<div class="con_content">
+		<div class="about_box">
+			<h2 class="nh1"><span>您现在的位置是：<a href="/" target="_blank">网站首页</a>>><a href="#" target="_blank">留言板</a></span>
+				<a href="{:url('message/addmessage')}">点此给我留言</a></h2>
+			<div class="dtxw box">
+				<div class="baBody">
+					<form action="{:url('message/addmessageout')}" method="post">
+
+						<div class="bbD">
+							<input type="hidden" class="input3" name="lea_status" value="1"/>
+						</div>
+
+						<div class="bbD">
+							留言者：<input type="text" class="input3" name="lea_editor"/>
+						</div>
+						<div class="bbD">
+							留 &nbsp; 言：<textarea rows="10" cols="10" class="input3" name="lea_content"></textarea>
+						</div>
+						<div class="bbD">
+							<p class="bbDP">
+								<input type="submit" class="btn_ok btn_yes" style="" value="提交">
+								<a href="{:url('message/index')}"><input type="text" class="btn_ok btn_no" value="取消"></a>
+							</p>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	<!-- container代码 结束 -->
+	{include file="public/foot"}
+
+</body>
+</html>
